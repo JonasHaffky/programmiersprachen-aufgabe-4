@@ -1,0 +1,11 @@
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles/edit_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles/rebuild_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles/nanovg.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/external/glfw-3.2.1/CMakeFiles/edit_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/external/glfw-3.2.1/CMakeFiles/rebuild_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/external/glfw-3.2.1/src/CMakeFiles/rebuild_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/external/glfw-3.2.1/src/CMakeFiles/edit_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/external/glfw-3.2.1/src/CMakeFiles/glfw.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/source/CMakeFiles/rebuild_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/source/CMakeFiles/edit_cache.dir
+/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/source/CMakeFiles/aufgabe1.dir
