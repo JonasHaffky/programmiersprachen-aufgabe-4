@@ -25,6 +25,13 @@ TEST_CASE("add an element with push_front", "[modifiers]")
 	REQUIRE(l2.front()==19);
 }
 
+TEST_CASE("add multiple elements with push_front", "[modifiers]")
+{
+	List<int> list(std::vector<int>{1,2,3});
+	REQUIRE(1 == list.front());
+	REQUIRE(3 == list.back());
+}
+
 TEST_CASE("add an element with push_back", "[modifiers]")
 {
 	List<int> list;

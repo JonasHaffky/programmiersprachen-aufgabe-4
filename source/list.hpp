@@ -21,10 +21,86 @@ struct ListNode
 template <typename T>
 struct ListIterator
 {
-    friend class List<T>;
-    // not implemented yet
-    private:
-        ListNode<T>* m_node = nullptr;
+	typedef ListIterator<T> Self;
+
+	typedef T value_pointer;
+	typedef T* pointer;
+	typedef T& reference;
+	typedef ptrdiff_t difference_type;
+	typedef std::forward_iterator_tag iterator_category;
+
+    friend class List<T>; //erlaubt Zugriff auf Membervariablen
+
+	//Konstruktoren
+	ListIterator () {}
+	ListIterator(ListNode<T>* n) : m_node(n) {}
+    
+	reference operator*() const //dereference operator, gibt Werte die in Node gespeichert sind aus (by reference, not by value)
+	{
+		return m_node->m_value;
+	}
+
+	pointer operator->() const //dereference operator, gibt Pointer auf Werte die in Node gespeichert sind aus
+	{
+		return &(m_node->m_value);
+	}
+
+	Self& operator++() //gibt Referenz zu ListIterator<T> zurück, hochzählender Iterator
+	{
+		*this = next(); //next() gibt neuen ListIterator aus, weißt ListIterator sich selbst zu (kopiert Wert vom neuen Listiterator nach sich selbst)
+
+		return *this; //gibt sich selbst als Referenz zurück (keinen Pointer zu sich selbst als Referenz)
+	}
+
+	Self& operator--() //Verminderungsiterator
+	{
+		*this = prev(); //prev() gibt neuen ListIterator aus, weißt ListIterator sich selbst zu (kopiert Wert vom neuen Listiterator nach sich selbst)
+
+		return *this; //gibt sich selbst als Referenz zurück (keinen Pointer zu sich selbst als Referenz)
+	}
+
+	Self& operator++(int counter) //gibt Referenz auf ListIterator<value_pointer>
+	{
+		for (; counter > 0; ++counter){*this++;}
+		return *this;
+	}
+
+	Self& operator--(int counter) //gibt Referenz auf ListIterator<value_pointer>
+	{
+		for (; counter > 0; ++counter){*this--;}
+		return *this;
+	}
+
+	bool operator==(const Self& x) const //Vergleich ob Iteratoren auf gleichen Knoten zeigen, nicht gleicher Wert
+	{
+		return m_node == x.m_node;
+	}
+
+	bool operator!=(const Self& x) const
+	{
+		return m_node != x.m_node;
+	}
+
+	//return next node
+	Self next() const
+	{
+		if(m_node)
+			return ListIterator(m_node->m_next);
+		else
+			return ListIterator(nullptr);
+	}
+
+	//return next node
+	Self prev() const
+	{
+		if(m_node)
+			return ListIterator(m_node->m_prev);
+		else
+			return ListIterator(nullptr);
+	}
+
+	private:
+        ListNode<T>* m_node = nullptr; //Pointer von Iterator auf Node, der mit nullpointer initialisiert wird 
 };
 
 template <typename T>
@@ -41,6 +117,7 @@ template <typename T>
 class List
 {
 public:
+	//set aliases for data types
     typedef T value_type;
     typedef T* pointer;
     typedef const T* const_pointer;
@@ -53,8 +130,29 @@ public:
     friend class ListConstIterator<T>;
     
     // Aufgabe 4.2 
-    List():m_first(nullptr),m_last(nullptr),m_size(0){}; //Default Constructor
-    bool empty() const{return m_first == nullptr && m_last == nullptr;}
+    List():m_first(nullptr),m_last(nullptr),m_size(0){}; //Default Konstructor
+
+	List(std::vector<value_type> const& values) : //Konstruktor mit Vektor
+				m_size{0},
+				m_first{nullptr},
+				m_last{nullptr}
+	{
+		for (value_type value : values)
+			push_back(value);
+	}
+
+	List(int size) :
+				m_size{0},
+				m_first{nullptr},
+				m_last{nullptr}
+	{
+		for (int i = 0; i<size; ++i)
+		{
+			push_back(0);
+		}
+	}
+
+	bool empty() const{return m_first == nullptr && m_last == nullptr;}
     std::size_t size() const{return m_size;}
     
     //Aufgabe 4.3
