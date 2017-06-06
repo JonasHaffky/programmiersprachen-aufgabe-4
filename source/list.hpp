@@ -53,7 +53,7 @@ public:
     friend class ListConstIterator<T>;
     
     // Aufgabe 4.2 
-    List():m_first(nullptr),m_last(nullptr),m_size(0){};
+    List():m_first(nullptr),m_last(nullptr),m_size(0){}; //Default Constructor
     bool empty() const{return m_first == nullptr && m_last == nullptr;}
     std::size_t size() const{return m_size;}
     
@@ -173,7 +173,7 @@ public:
 		//Case List has multiple elements
 		else
 		{				
-			//erstes element zwischenspeichern
+			//letztes element zwischenspeichern
 			ListNode<T>* former_last = m_last;
 			
 			//front zeigt auf das element auf das next
@@ -197,7 +197,18 @@ public:
 	value_type back() const
 	{
 		return m_last->m_value;
-}
+	}
+
+	//Aufgabe 4.4
+	void clear()
+	{
+		while(!empty())
+			pop_front();
+	}
+
+	//Destructor
+	~List(){clear();}
+
 private:
     std::size_t m_size = 0;
     ListNode<T>* m_first = nullptr;

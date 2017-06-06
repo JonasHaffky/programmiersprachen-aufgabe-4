@@ -70,6 +70,19 @@ TEST_CASE("remove an element with pop_back", "[modifiers]")
 	REQUIRE(list.size() == 0);
 }
 
+//AUFGABE 4.4
+
+TEST_CASE("clear list", "[modifiers]")
+{
+	List<int> list;
+	list.push_front(19);
+	list.push_front(8);
+	list.push_front(12);
+	REQUIRE(list.size()==3);
+	list.clear();
+	REQUIRE(list.empty());
+}
+
 int main(int argc, char* argv[])
 {
     return Catch::Session().run(argc, argv);
