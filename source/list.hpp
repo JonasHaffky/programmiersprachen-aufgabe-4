@@ -331,6 +331,19 @@ public:
 			return iterator(nullptr);
 }
 
+//Aufgabe 4.8
+List(List<T> const& x) : m_size{0}, //copy-Konstruktor
+				m_first{nullptr},
+				m_last{nullptr}
+	{
+		auto it = x.begin();
+		while(it != nullptr)
+		{
+			push_back(*it);
+			++it;
+		}
+	}
+
 private:
     std::size_t m_size = 0;
     ListNode<T>* m_first = nullptr;

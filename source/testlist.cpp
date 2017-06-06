@@ -159,6 +159,14 @@ TEST_CASE ("== and != operator", "[list comparison]")
 	REQUIRE(list1 != list3);
 }
 
+// AUFGABE 4.8
+TEST_CASE ("copy construction of list", "[constructor]")
+{
+	List<int> list (std::vector<int> {7,2,4});
+	List<int> copy_list {list};
+	REQUIRE(list == copy_list);
+}
+
 
 int main(int argc, char* argv[])
 {
