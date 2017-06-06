@@ -109,14 +109,14 @@ TEST_CASE("iterator initializations", "[ListIterator]")
 TEST_CASE("operator-> test", "[ListIterator]")
 {
 	List<Circle> circle_list;
-	circle_list.push_back(Circle{5});
+	circle_list.push_back(Circle{8});
 	circle_list.push_back(Circle{6});
 	circle_list.push_back(Circle{7});
 
 	auto it = circle_list.begin();
 
 	int x = it->m_radius;
-	REQUIRE(x == 5);
+	REQUIRE(x == 8);
 
 	it->warp();
 	REQUIRE(it->m_radius == 0);
@@ -131,7 +131,7 @@ TEST_CASE("should be a empty range after default construction", "[iterators]")
 	auto e = list.end();
 	REQUIRE(b == e);
 
-	list.push_front(5);
+	list.push_front(9);
 	e = list.end();
 	REQUIRE(b != e);
 }
@@ -139,9 +139,26 @@ TEST_CASE("should be a empty range after default construction", "[iterators]")
 TEST_CASE("provide access to the first element with begin", "[iterators]")
 {
 	List<int> list;
-	list.push_front(42);
-	REQUIRE(42 == *list.begin());
+	list.push_front(18);
+	REQUIRE(18 == *list.begin());
 }
+
+// AUFGABE 4.7
+TEST_CASE ("== and != operator", "[list comparison]")
+{
+	List<int> list1;
+	list1.push_front(12);
+	
+	List<int> list2;
+	list2.push_front(12);
+	
+	List<int> list3;
+	list3.push_front(24);
+
+	REQUIRE(list1 == list2);
+	REQUIRE(list1 != list3);
+}
+
 
 int main(int argc, char* argv[])
 {

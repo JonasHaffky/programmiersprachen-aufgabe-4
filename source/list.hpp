@@ -337,4 +337,32 @@ private:
     ListNode<T>* m_last = nullptr;
 };
 
+template<typename T>
+bool operator==(List<T> const& xs, List<T> const& ys)
+{
+	if(xs.size() == ys.size())
+	{
+		//jedes Element wird verglichen
+		auto it_xs = xs.begin();
+		auto it_ys = ys.begin();
+
+		while(it_xs != nullptr) //solange it_xs kein nullpointer ist (Ende der Liste), überprüfe ob die Werte der Nodes gleich sind
+		{
+			if(*it_xs != *it_ys) //vergleiche
+				return false;
+			++it_xs;
+			++it_ys;
+		}
+		return true;
+	}
+	else
+		return false;
+}
+
+template<typename T>
+bool operator!=(List<T> const& xs, List<T> const& ys)
+{
+	return !(xs==ys);
+}
+
 #endif // #define BUW_LIST_HPP
