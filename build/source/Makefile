@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+source/CMakeFiles/testlist.dir/rule:
+	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/testlist.dir/rule
+.PHONY : source/CMakeFiles/testlist.dir/rule
+
+# Convenience name for target.
+testlist: source/CMakeFiles/testlist.dir/rule
+
+.PHONY : testlist
+
+# fast build rule for target.
+testlist/fast:
+	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/build
+.PHONY : testlist/fast
+
+# Convenience name for target.
 source/CMakeFiles/aufgabe1.dir/rule:
 	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/aufgabe1.dir/rule
 .PHONY : source/CMakeFiles/aufgabe1.dir/rule
@@ -152,6 +167,33 @@ aufgabe1.cpp.s:
 	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f source/CMakeFiles/aufgabe1.dir/build.make source/CMakeFiles/aufgabe1.dir/aufgabe1.cpp.s
 .PHONY : aufgabe1.cpp.s
 
+testlist.o: testlist.cpp.o
+
+.PHONY : testlist.o
+
+# target to build an object file
+testlist.cpp.o:
+	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/testlist.cpp.o
+.PHONY : testlist.cpp.o
+
+testlist.i: testlist.cpp.i
+
+.PHONY : testlist.i
+
+# target to preprocess a source file
+testlist.cpp.i:
+	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/testlist.cpp.i
+.PHONY : testlist.cpp.i
+
+testlist.s: testlist.cpp.s
+
+.PHONY : testlist.s
+
+# target to generate assembly for a file
+testlist.cpp.s:
+	cd /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build && $(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/testlist.cpp.s
+.PHONY : testlist.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,11 +201,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... testlist"
 	@echo "... edit_cache"
 	@echo "... aufgabe1"
 	@echo "... aufgabe1.o"
 	@echo "... aufgabe1.i"
 	@echo "... aufgabe1.s"
+	@echo "... testlist.o"
+	@echo "... testlist.i"
+	@echo "... testlist.s"
 .PHONY : help
 
 

@@ -173,11 +173,13 @@ clean: external/glfw-3.2.1/src/CMakeFiles/glfw.dir/clean
 # Directory level rules for directory source
 
 # Convenience name for "all" pass in the directory.
+source/all: source/CMakeFiles/testlist.dir/all
 source/all: source/CMakeFiles/aufgabe1.dir/all
 
 .PHONY : source/all
 
 # Convenience name for "clean" pass in the directory.
+source/clean: source/CMakeFiles/testlist.dir/clean
 source/clean: source/CMakeFiles/aufgabe1.dir/clean
 
 .PHONY : source/clean
@@ -186,6 +188,43 @@ source/clean: source/CMakeFiles/aufgabe1.dir/clean
 source/preinstall:
 
 .PHONY : source/preinstall
+
+#=============================================================================
+# Target rules for target source/CMakeFiles/testlist.dir
+
+# All Build rule for target.
+source/CMakeFiles/testlist.dir/all:
+	$(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/depend
+	$(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles --progress-num=21,22 "Built target testlist"
+.PHONY : source/CMakeFiles/testlist.dir/all
+
+# Include target in all.
+all: source/CMakeFiles/testlist.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+source/CMakeFiles/testlist.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/testlist.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jonashaffky/Dokumente/Studium/Programmiersprachen/Uebung/Uebung4/programmiersprachen-aufgabe-4/build/CMakeFiles 0
+.PHONY : source/CMakeFiles/testlist.dir/rule
+
+# Convenience name for target.
+testlist: source/CMakeFiles/testlist.dir/rule
+
+.PHONY : testlist
+
+# clean rule for target.
+source/CMakeFiles/testlist.dir/clean:
+	$(MAKE) -f source/CMakeFiles/testlist.dir/build.make source/CMakeFiles/testlist.dir/clean
+.PHONY : source/CMakeFiles/testlist.dir/clean
+
+# clean rule for target.
+clean: source/CMakeFiles/testlist.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target source/CMakeFiles/aufgabe1.dir
