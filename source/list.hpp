@@ -3,10 +3,17 @@
 
 #include <cstddef>
 
-template <typename T>
+struct Circle //einfacher Kreis für Tests
+{
+	Circle (int radius) : m_radius(radius) {};
+	int m_radius;
+	void warp () {m_radius = 0;}
+};
+
+template <typename T> //Deklaratio vom struct List
 struct List;
 
-template <typename T>
+template <typename T> //Definition vom struct ListNode
 struct ListNode
 {
     ListNode() : m_value(), m_prev(nullptr), m_next(nullptr) {}
@@ -306,6 +313,23 @@ public:
 
 	//Destructor
 	~List(){clear();}
+
+	//Aufgabe 4.6
+	iterator begin () const
+	{
+		if (m_first)
+			return iterator(m_first);
+		else
+			return iterator(nullptr);
+	}
+
+	iterator end () const
+	{
+		if (m_last)
+			return iterator(m_last);
+		else
+			return iterator(nullptr);
+}
 
 private:
     std::size_t m_size = 0;

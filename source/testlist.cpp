@@ -27,9 +27,9 @@ TEST_CASE("add an element with push_front", "[modifiers]")
 
 TEST_CASE("add multiple elements with push_front", "[modifiers]")
 {
-	List<int> list(std::vector<int>{1,2,3});
-	REQUIRE(1 == list.front());
-	REQUIRE(3 == list.back());
+	List<int> list(std::vector<int>{5,2,8});
+	REQUIRE(5 == list.front());
+	REQUIRE(8 == list.back());
 }
 
 TEST_CASE("add an element with push_back", "[modifiers]")
@@ -81,13 +81,66 @@ TEST_CASE("remove an element with pop_back", "[modifiers]")
 
 TEST_CASE("clear list", "[modifiers]")
 {
-	List<int> list;
-	list.push_front(19);
-	list.push_front(8);
-	list.push_front(12);
-	REQUIRE(list.size()==3);
+	List<int> list (std::vector<int>{8,2,4});
+	REQUIRE(3 == list.size());
 	list.clear();
 	REQUIRE(list.empty());
+}
+
+// AUFGABE 4.5 und 4.6
+TEST_CASE("iterator initializations", "[ListIterator]")
+{
+	List<int> list (std::vector<int>{8,2,4});
+	
+	ListIterator<int> it {};
+	it = list.begin();
+	REQUIRE(*it == 8);
+
+	auto auto_it = list.begin();
+	REQUIRE(*auto_it == 8);
+
+	ListIterator<int> it_begin {list.begin()};
+	REQUIRE(*it_begin == 8);
+
+	ListIterator<int> it_end {list.end()};
+	REQUIRE(*it_end == 4);
+}
+
+TEST_CASE("operator-> test", "[ListIterator]")
+{
+	List<Circle> circle_list;
+	circle_list.push_back(Circle{5});
+	circle_list.push_back(Circle{6});
+	circle_list.push_back(Circle{7});
+
+	auto it = circle_list.begin();
+
+	int x = it->m_radius;
+	REQUIRE(x == 5);
+
+	it->warp();
+	REQUIRE(it->m_radius == 0);
+
+}
+
+TEST_CASE("should be a empty range after default construction", "[iterators]")
+{
+	List<int> list;
+	
+	auto b = list.begin();
+	auto e = list.end();
+	REQUIRE(b == e);
+
+	list.push_front(5);
+	e = list.end();
+	REQUIRE(b != e);
+}
+
+TEST_CASE("provide access to the first element with begin", "[iterators]")
+{
+	List<int> list;
+	list.push_front(42);
+	REQUIRE(42 == *list.begin());
 }
 
 int main(int argc, char* argv[])
