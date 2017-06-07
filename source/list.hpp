@@ -334,11 +334,8 @@ public:
 
 	iterator end () const
 	{
-		if (m_last)
-			return iterator(m_last);
-		else
-			return iterator(nullptr);
-}
+		return iterator(nullptr);
+	}
 
 //Aufgabe 4.8
 List(List<T> const& x) : m_size{0}, //copy-Konstruktor
