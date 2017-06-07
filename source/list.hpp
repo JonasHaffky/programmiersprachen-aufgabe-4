@@ -344,6 +344,37 @@ List(List<T> const& x) : m_size{0}, //copy-Konstruktor
 		}
 	}
 
+//Aufgabe 4.9
+void insert (iterator it, const T& obj)
+	{
+		if (m_size == 0)
+			push_front(obj);
+
+		else if(it == begin())
+			push_front(obj);
+		
+		else if(it == end())
+			push_back(obj);
+		
+		else
+		{
+			ListNode<T>* old = it.m_node; //old speichert iteratornode zwischen
+
+			ListNode<T>* prev = it.m_node->m_prev;
+
+			ListNode<T>* insert = new ListNode<T>{
+				obj, 		//T
+				prev, 	//Pointer auf prev 
+				old		//Pointer auf next mit nullptr initialisieren
+			};
+
+			
+			old->m_prev = insert; //Zeiger von old zu neuem Element
+			prev->m_next = insert; //Zeiger von prev zu neuem Element
+			++ m_size;
+		}
+}
+
 private:
     std::size_t m_size = 0;
     ListNode<T>* m_first = nullptr;

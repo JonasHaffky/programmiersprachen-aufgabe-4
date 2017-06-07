@@ -146,17 +146,17 @@ TEST_CASE("provide access to the first element with begin", "[iterators]")
 // AUFGABE 4.7
 TEST_CASE ("== and != operator", "[list comparison]")
 {
-	List<int> list1;
-	list1.push_front(12);
+	List<int> l1;
+	l1.push_front(12);
 	
-	List<int> list2;
-	list2.push_front(12);
+	List<int> l2;
+	l2.push_front(12);
 	
-	List<int> list3;
-	list3.push_front(24);
+	List<int> l3;
+	l3.push_front(24);
 
-	REQUIRE(list1 == list2);
-	REQUIRE(list1 != list3);
+	REQUIRE(l1 == l2);
+	REQUIRE(l1 != l3);
 }
 
 // AUFGABE 4.8
@@ -165,6 +165,42 @@ TEST_CASE ("copy construction of list", "[constructor]")
 	List<int> list (std::vector<int> {7,2,4});
 	List<int> copy_list {list};
 	REQUIRE(list == copy_list);
+}
+
+// AUFGABE 4.9
+TEST_CASE ("insert method", "[list]")
+{
+	List<int> list (std::vector<int> {6,2,9});
+	
+	//Am Anfang einfügen
+	ListIterator<int> pos_begin = list.begin(); //pushFront
+	list.insert(pos_begin,5);
+	REQUIRE(*list.begin() == 5);
+	REQUIRE(*pos_begin == 6); //neues Element wird VOR iterator eingefügt
+	
+
+	//Am Ende einfügen
+	ListIterator<int> pos_end = list.end();
+	list.insert(pos_end,6);
+	REQUIRE(pos_end == nullptr);
+	
+
+	//In der Mitte einfügen
+	ListIterator<int> pos_mid = list.begin();
+	++pos_mid;
+	
+	list.insert(pos_mid,10);
+	
+	REQUIRE(*pos_mid == 6);
+	--pos_mid;
+	REQUIRE(*pos_mid == 10);
+	
+	//Leere Liste
+	List<int> list2 (std::vector<int> {});
+	ListIterator<int> empty_it = list2.begin();
+	list2.insert(empty_it,5);
+	REQUIRE(*list2.begin() == 5);
+
 }
 
 
