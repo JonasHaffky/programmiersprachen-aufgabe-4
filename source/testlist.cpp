@@ -203,6 +203,17 @@ TEST_CASE ("insert method", "[list]")
 
 }
 
+// AUFGABE 4.10
+TEST_CASE ("reverse method","[list]")
+{
+	List<int> list (std::vector<int> {6,4,2,8,3});
+	list.reverse();
+	REQUIRE(*list.begin() == 3);
+
+	List<int> newlist = reverse(list);
+	REQUIRE(*newlist.begin() == 6);
+}
+
 
 int main(int argc, char* argv[])
 {

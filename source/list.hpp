@@ -374,6 +374,34 @@ void insert (iterator it, const T& obj)
 			++ m_size;
 		}
 }
+//Aufgabe 4.10
+void reverse ()
+	{
+		if (m_size > 1)
+		{
+			//Liste temp wird mit gleicher Größe angelegt
+			int x = size();
+			List<T> temp{x};
+
+			//Iterator auf erstes this Element, und auf letztes temp Element
+			iterator first = this->begin();
+			iterator second = temp.begin();
+
+			for(int j = 1; j<x; ++j)
+			{
+				++second;
+			}
+			
+			for(int i = 0; i<x; ++i) //nicht sehr schön aber funktioniert
+			{
+				*second = *first;
+				--second;
+				++first;
+			}
+
+			*this = temp;
+		} 
+}
 
 private:
     std::size_t m_size = 0;
@@ -407,6 +435,14 @@ template<typename T>
 bool operator!=(List<T> const& xs, List<T> const& ys)
 {
 	return !(xs==ys);
+}
+
+template<typename T>
+List<T> reverse (List<T> const& list)
+{
+	List<T> temp {list};
+	temp.reverse();
+	return temp;
 }
 
 #endif // #define BUW_LIST_HPP
