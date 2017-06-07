@@ -194,9 +194,9 @@ TEST_CASE ("insert method", "[list]")
 	
 
 	//Am Ende einfügen
-	ListIterator<int> pos_end = list.end();
-	list.insert(pos_end,6);
+	ListIterator<int> pos_end = list.end(); //funktioniert nicht
 	REQUIRE(pos_end == nullptr);
+	list.insert(pos_end,6);
 	
 
 	//In der Mitte einfügen
@@ -227,7 +227,32 @@ TEST_CASE ("reverse method","[list]")
 	List<int> newlist = reverse(list);
 	REQUIRE(*newlist.begin() == 6);
 }
+/*Aufgabe 4.11
+TEST_CASE("4.11 copy" , "[std copy]")
+{
+	List<int> list (std::vector<int> {1,2,3,4});
+	std::vector<int> v(4);
+	std::copy(list.begin(),list.end(),v.begin());
+	REQUIRE(v[0] == 1);
+}
 
+TEST_CASE("4.12 operator" , "[copy assignment]")
+{
+	List<int> list1 (std::vector<int> {1,2,3,4});
+	List<int> list2 (std::vector<int> {5,6,7});
+	list2 = list;
+	REQUIRE(list1 == list2);
+}
+
+Aufgabe 4.13
+TEST_CASE("move constructor","[constructor]"){
+
+	List<int> list (std::vector<int> {1,2,3,4});
+	List<int> list2(std::move(list));
+	REQUIRE( 0 == list.size());
+	REQUIRE(list.empty());
+	REQUIRE(4 == list2.size());
+}*/
 
 
 int main(int argc, char* argv[])

@@ -2,6 +2,9 @@
 #define BUW_LIST_HPP
 
 #include <cstddef>
+#include <iterator>
+#include <typeinfo>
+#include <iostream>
 
 struct Circle //einfacher Kreis für Tests
 {
@@ -409,6 +412,27 @@ void reverse ()
 		} 
 }
 
+/*Aufgabe 4.12
+List& operator=(List rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+void swap(List & rhs)
+{
+	std::swap(m_first, rhs.m_first);
+	std::swap(m_last, rhs.m_last);
+}
+
+Aufgabe 4.13
+List(List&& listmove):
+	m_first{listmove.m_first},m_last{listmove.m_last},m_size{listmove.m_size}{
+
+		listmove.m_first = nullptr;
+		listmove.m_last = nullptr;
+		listmove.m_size = 0;
+}*/
 
 private:
     std::size_t m_size = 0;
