@@ -52,6 +52,7 @@ struct ListIterator
 		return &(m_node->m_value);
 	}
 
+	//Prefix Increment
 	Self& operator++() //gibt Referenz zu ListIterator<T> zurück, hochzählender Iterator
 	{
 		*this = next(); //next() gibt neuen ListIterator aus, weißt ListIterator sich selbst zu (kopiert Wert vom neuen Listiterator nach sich selbst)
@@ -59,6 +60,7 @@ struct ListIterator
 		return *this; //gibt sich selbst als Referenz zurück (keinen Pointer zu sich selbst als Referenz)
 	}
 
+	//Prefix Decrement
 	Self& operator--() //Verminderungsiterator
 	{
 		*this = prev(); //prev() gibt neuen ListIterator aus, weißt ListIterator sich selbst zu (kopiert Wert vom neuen Listiterator nach sich selbst)
@@ -66,17 +68,21 @@ struct ListIterator
 		return *this; //gibt sich selbst als Referenz zurück (keinen Pointer zu sich selbst als Referenz)
 	}
 
-	Self& operator++(int counter) //gibt Referenz auf ListIterator<value_pointer>
+	// Post Increment
+	Self operator++(int) //Referenz auf ListIterator<value_pointer>
 	{
-		for (; counter > 0; ++counter){*this++;}
-		return *this;
+		ListIterator<T> temp(*this);
+		operator++(); // Prefix-Increment von dieser Instanz
+		return temp; //gibt alte Instanz zurück
 	}
 
-	Self& operator--(int counter) //gibt Referenz auf ListIterator<value_pointer>
+	// Post Decrement
+	Self operator--(int) //Referenz auf ListIterator<value_pointer>, funktioniert nicht dür list.end()
 	{
-		for (; counter > 0; ++counter){*this--;}
-		return *this;
-	}
+		ListIterator<T> temp(*this);
+		operator--(); // Prefix-Decrement von dieser Instanz
+		return temp; //gibt alte Instanz zurück
+}
 
 	bool operator==(const Self& x) const //Vergleich ob Iteratoren auf gleichen Knoten zeigen, nicht gleicher Wert
 	{
@@ -402,6 +408,7 @@ void reverse ()
 			*this = temp;
 		} 
 }
+
 
 private:
     std::size_t m_size = 0;

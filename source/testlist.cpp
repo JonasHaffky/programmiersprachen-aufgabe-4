@@ -106,6 +106,20 @@ TEST_CASE("iterator initializations", "[ListIterator]")
 	REQUIRE(*it_end == 4);
 }
 
+TEST_CASE("PRE and POST Increment of Iterator", "[ListIterator]")
+{
+	List<int> list (std::vector<int> {1,2,3,4});
+
+	auto it = list.begin();
+	REQUIRE(*it == 1);
+	++it;
+	REQUIRE(*it == 2);
+	auto second = it++;
+	REQUIRE(*second == 2);
+	REQUIRE(*it == 3);
+
+}
+
 TEST_CASE("operator-> test", "[ListIterator]")
 {
 	List<Circle> circle_list;
@@ -213,6 +227,7 @@ TEST_CASE ("reverse method","[list]")
 	List<int> newlist = reverse(list);
 	REQUIRE(*newlist.begin() == 6);
 }
+
 
 
 int main(int argc, char* argv[])
